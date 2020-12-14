@@ -13,7 +13,7 @@ public class RestArticleController {
 	@Autowired
 	private ArticleRepository articleRepository;
 	
-	@GetMapping("/articles")
+	@GetMapping("/article")
 	public Iterable<Article> getArticles() {
 		Iterable<Article> articles = articleRepository.findAll();
 		System.out.println("Sending all articles");

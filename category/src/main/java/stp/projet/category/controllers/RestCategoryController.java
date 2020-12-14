@@ -13,7 +13,7 @@ public class RestCategoryController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	@GetMapping("/categories")
+	@GetMapping("/category")
 	public Iterable<Category> getCategories() {
 		Iterable<Category> categories = categoryRepository.findAll();	
 		System.out.println("sending all categories");
