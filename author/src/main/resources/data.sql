@@ -9,4 +9,5 @@ CREATE TABLE authors (
  
 INSERT INTO authors (name, password, email) VALUES
   ('Thomas','password','thomas@gmail.com'),
-  ('Pierre','password2','Pierre@test.fr');
+  ('Pierre','password2','Pierre@test.fr'),
+  ('Sebastien','password3','seb@test.fr');

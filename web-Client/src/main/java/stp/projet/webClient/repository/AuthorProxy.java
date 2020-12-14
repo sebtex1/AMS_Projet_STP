@@ -14,24 +14,24 @@ import stp.projet.webClient.model.author;
 
 @Repository
 public class AuthorProxy extends GenericProxy {
-	
-	public author getAuthors(int id) {
+
+	public author getAuthor(int id) {
 		
-		String getAuthorsUrl = "http://localhost:9002/author";
+		String getAuthorUrl = "http://localhost:9002/author/" + id;
 		
 		ResponseEntity<author> response = restTemplate.exchange(
-				getAuthorsUrl, 
+				getAuthorUrl, 
 				HttpMethod.GET, 
 				null, 
 				author.class);
 		
-		return response.getBody();
+		return response.getBody();		
 	}
 	
 	@CircuitBreaker(name ="proxy", fallbackMethod = "fallback")
-	public Iterable<author> getUsers() {
+	public Iterable<author> getAuthors() {
 		
-		String getAuthorsUrl = "http://localhost:9002/author";
+		String getAuthorsUrl ="http//localhost:9002/author";
 		
 		ResponseEntity<Iterable<author>> response = restTemplate.exchange(
 				getAuthorsUrl, 

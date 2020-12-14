@@ -14,25 +14,18 @@
 				<th>Id</th>
 				<th>Username</th>
 				<th>Password</th>
-				<th>Actions</th>
+				<th>Email</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="user: ${users}">
-				<td><span th:text="${user.id}"></span></td>
-				<td><span th:text="${user.username}"></span></td>
-				<td><span th:text="${user.password}"></span></td>
-				<td>
-					<a th:href="@{/updateUser/{id}(id=${user.id})}">
-						Update
-					</a><br/>
-					<a th:href="@{/deleteUser/{id}(id=${user.id})}">
-						Delete
-					</a>				
-				</td>
+			<tr th:each="author: ${authors}">
+				<td><span th:text="${author.id}"></span></td>
+				<td><span th:text="${author.username}"></span></td>
+				<td><span th:text="${author.password}"></span></td>
+				<td><span th:text="${author.Email}"></span></td>
 			</tr>
 		</tbody>
 	</table>
--->
+	-->
 </body>
 </html>
