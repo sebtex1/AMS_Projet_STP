@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: stp.projet.gateway.GatewayApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.069 s - in stp.projet.gateway.GatewayApplicationTests
