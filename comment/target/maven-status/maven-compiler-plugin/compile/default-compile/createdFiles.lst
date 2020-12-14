@@ -1,0 +1,4 @@
+stp\projet\comment\repositories\CommentRepository.class
+stp\projet\comment\controller\RestCommentController.class
+stp\projet\comment\model\Comment.class
+stp\projet\comment\CommentApplication.class
