@@ -30,25 +30,24 @@ public class Comment {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public Integer getAuthor() {
+	public Integer getIdauthor() {
 		return idauthor;
 	}
-	public void setAuteur(Integer idauthor) {
+	public void setIdauthor(Integer idauthor) {
 		this.idauthor = idauthor;
 	}
-	
 	public Date getDate() {
 		return date;
 	}
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
 	public String getText() {
 		return text;
 	}
 	public void setText(String text) {
 		this.text = text;
 	}
+	
+	
 }

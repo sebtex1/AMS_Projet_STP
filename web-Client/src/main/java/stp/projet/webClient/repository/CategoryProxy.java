@@ -10,54 +10,53 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.client.HttpServerErrorException;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
-import stp.projet.webClient.model.author;
+import stp.projet.webClient.model.category;
 
 @Repository
-public class AuthorProxy extends GenericProxy {
+public class CategoryProxy extends GenericProxy{
 
-	public author getAuthor(int id) {
+	public category getCategory(int id) {
 		
-		String getAuthorUrl = props.getApiUrl() + "/author" + id;
+		String getCategoryUrl = props.getApiUrl() + "/category" + id;
 		
-		ResponseEntity<author> response = restTemplate.exchange(
-				getAuthorUrl, 
+		ResponseEntity<category> response = restTemplate.exchange(
+				getCategoryUrl, 
 				HttpMethod.GET, 
 				null, 
-				author.class);
+				category.class);
 		
 		return response.getBody();		
 	}
 	
 	@CircuitBreaker(name ="proxy", fallbackMethod = "fallback")
-	public Iterable<author> getAuthors() {
+	public Iterable<category> getCategories() {
 		
-		String getAuthorsUrl = props.getApiUrl() + "/author";
+		String getCategoriesUrl = props.getApiUrl() + "/category";
 		
-		ResponseEntity<Iterable<author>> response = restTemplate.exchange(
-				getAuthorsUrl, 
+		ResponseEntity<Iterable<category>> response = restTemplate.exchange(
+				getCategoriesUrl, 
 				HttpMethod.GET, 
 				null, 
-				new ParameterizedTypeReference<Iterable<author>>() {});
+				new ParameterizedTypeReference<Iterable<category>>() {});
 		
 		return response.getBody();
 	}
 	
 	@SuppressWarnings("unused")
-	private Iterable<author> fallback(IllegalStateException ex) {
+	private Iterable<category> fallback(IllegalStateException ex) {
 		System.out.println("From fallback method IllegalState : " + ex.getMessage());
-		return new ArrayList<author>();
+		return new ArrayList<category>();
 	}
 	
 	@SuppressWarnings("unused")
-	private Iterable<author> fallback(TimeoutException ex) {
+	private Iterable<category> fallback(TimeoutException ex) {
 		System.out.println("From fallback method Timeout : " + ex.getMessage());
-		return new ArrayList<author>();
+		return new ArrayList<category>();
 	}
 	
 	@SuppressWarnings("unused")
-	private Iterable<author> fallback(HttpServerErrorException ex) {
+	private Iterable<category> fallback(HttpServerErrorException ex) {
 		System.out.println("From fallback method HttpServerErrorException : " + ex.getMessage());
-		return new ArrayList<author>();
-	}
-
+		return new ArrayList<category>();
+	}	
 }

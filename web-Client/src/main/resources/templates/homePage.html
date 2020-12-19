@@ -6,13 +6,14 @@
 <title>Blog home page</title>
 </head>
 <body>
-	Welcome to the blog home page!
-	<!--
+	<h1>Welcome to the blog home page!</h1>
+	
+	<h2>Table authors (users)</h2>
 	<table>
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Username</th>
+				<th>Name</th>
 				<th>Password</th>
 				<th>Email</th>
 			</tr>
@@ -20,12 +21,73 @@
 		<tbody>
 			<tr th:each="author: ${authors}">
 				<td><span th:text="${author.id}"></span></td>
-				<td><span th:text="${author.username}"></span></td>
+				<td><span th:text="${author.name}"></span></td>
 				<td><span th:text="${author.password}"></span></td>
 				<td><span th:text="${author.Email}"></span></td>
 			</tr>
 		</tbody>
 	</table>
-	-->
+	
+	<h2>Table articles</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Category</th>
+				<th>Author</th>
+				<th>Date</th>
+				<th>Content</th>
+				<th>Comments</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="article: ${articles}">
+				<td><span th:text="${article.id}"></span></td>
+				<td><span th:text="${article.name}"></span></td>
+				<td><span th:text="${article.idcategory}"></span></td>
+				<td><span th:text="${article.idauthor}"></span></td>
+				<td><span th:text="${article.date}"></span></td>
+				<td><span th:text="${article.content}"></span></td>
+				<td><span th:text="${article.idcomments}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<h2>Table categories</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="category: ${categories}">
+				<td><span th:text="${category.id}"></span></td>
+				<td><span th:text="${category.name}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<h2>Table comments</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Date</th>
+				<th>Content</th>
+				<th>Author</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="comment: ${comments}">
+				<td><span th:text="${comment.id}"></span></td>
+				<td><span th:text="${comment.date}"></span></td>
+				<td><span th:text="${comment.text}"></span></td>
+				<td><span th:text="${comment.idauthor}"></span></td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>

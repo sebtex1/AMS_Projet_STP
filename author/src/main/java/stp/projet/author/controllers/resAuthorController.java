@@ -28,9 +28,9 @@ public class resAuthorController {
 	@GetMapping("/author/{id}")
 	public Optional<author> getAuthor(@PathVariable("id") int id) 
 			throws InterruptedException {
-		Optional<author> user = authorRepository.findById(id);		
-		System.out.println("Retrieve " + user.get().getName());
-		return user;		
+		Optional<author> author = authorRepository.findById(id);		
+		System.out.println("Retrieve " + author.get().getName());
+		return author;		
 	}
 
 }
