@@ -17,7 +17,7 @@ public class AuthorProxy extends GenericProxy {
 
 	public author getAuthor(int id) {
 		
-		String getAuthorUrl = props.getApiUrl() + "/author" + id;
+		String getAuthorUrl = props.getApiUrl() + "/author/" + id;
 		
 		ResponseEntity<author> response = restTemplate.exchange(
 				getAuthorUrl, 

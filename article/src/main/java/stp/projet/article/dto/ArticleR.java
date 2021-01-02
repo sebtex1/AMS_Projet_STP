@@ -1,16 +1,20 @@
-package stp.projet.webClient.model;
+package stp.projet.article.dto;
 
 import java.sql.Date;
 
-public class article {
+import stp.projet.article.model.Author;
+import stp.projet.article.model.Category;
+import stp.projet.article.model.Comment;
+
+public class ArticleR {
 	
 	private Integer id;
 	private String name;
-	private category category;
-	private author author;
+	private Category category; 
+	private Author author;
 	private Date date;
 	private String content;
-	private comment comment;
+	private Comment comment;
 	
 	public Integer getId() {
 		return id;
@@ -24,16 +28,16 @@ public class article {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public category getCategory() {
+	public Category getCategory() {
 		return category;
 	}
-	public void setCategory(category category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
-	public author getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
-	public void setAuthor(author author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
 	public Date getDate() {
@@ -48,10 +52,10 @@ public class article {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public comment getComment() {
+	public Comment getComment() {
 		return comment;
 	}
-	public void setComment(comment comment) {
+	public void setComment(Comment comment) {
 		this.comment = comment;
-	}	
+	}
 }

@@ -45,11 +45,11 @@
 			<tr th:each="article: ${articles}">
 				<td><span th:text="${article.id}"></span></td>
 				<td><span th:text="${article.name}"></span></td>
-				<td><span th:text="${article.idcategory}"></span></td>
-				<td><span th:text="${article.idauthor}"></span></td>
+				<td><span th:text="${article.category.name}"></span></td>
+				<td><span th:text="${article.author.name}"></span></td>
 				<td><span th:text="${article.date}"></span></td>
 				<td><span th:text="${article.content}"></span></td>
-				<td><span th:text="${article.idcomments}"></span></td>
+				<td><span th:text="${article.comment.text}"></span></td>
 			</tr>
 		</tbody>
 	</table>
