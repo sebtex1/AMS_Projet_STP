@@ -17,7 +17,7 @@ public class ArticleProxy extends GenericProxy {
 	
 	public article getArticle(int id) {
 		
-		String getArticleUrl = props.getApiUrl() + "/article" + id;
+		String getArticleUrl = props.getApiUrl() + "/article/" + id;
 		
 		ResponseEntity<article> response = restTemplate.exchange(
 				getArticleUrl, 

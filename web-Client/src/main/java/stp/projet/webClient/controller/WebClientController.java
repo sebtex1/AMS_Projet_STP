@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import stp.projet.webClient.model.author;
 import stp.projet.webClient.model.article;
@@ -44,4 +45,19 @@ public class WebClientController {
 		model.addAttribute("comments", comments);
 		return "homePage";
 	}
+	
+	@GetMapping("/{id}")
+	public String getArticle(
+			@PathVariable(name = "id", required = false) Integer id,
+			Model model) {
+		int idToGet = 1;
+		if(id != null) {
+			idToGet = id;
+		}
+		article article = articleProxy.getArticle(idToGet);
+		model.addAttribute("article", article);
+		
+		return "article";
+	}
+	
 }

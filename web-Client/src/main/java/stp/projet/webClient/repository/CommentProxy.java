@@ -17,7 +17,7 @@ public class CommentProxy extends GenericProxy {
 
 	public comment getComment(int id) {
 		
-		String getCommentUrl = props.getApiUrl() + "/comment" + id;
+		String getCommentUrl = props.getApiUrl() + "/comment/" + id;
 		
 		ResponseEntity<comment> response = restTemplate.exchange(
 				getCommentUrl, 

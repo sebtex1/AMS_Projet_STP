@@ -17,7 +17,7 @@ public class CategoryProxy extends GenericProxy{
 
 	public category getCategory(int id) {
 		
-		String getCategoryUrl = props.getApiUrl() + "/category" + id;
+		String getCategoryUrl = props.getApiUrl() + "/category/" + id;
 		
 		ResponseEntity<category> response = restTemplate.exchange(
 				getCategoryUrl, 
