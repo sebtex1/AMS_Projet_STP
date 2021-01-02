@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 import stp.projet.webClient.model.author;
 import stp.projet.webClient.model.article;
 import stp.projet.webClient.model.category;
@@ -58,6 +60,51 @@ public class WebClientController {
 		model.addAttribute("article", article);
 		
 		return "article";
+	}
+		
+	@GetMapping("/createAuthor")
+	public String createAuthor(Model model) {
+		author author = new author();
+		model.addAttribute("author", author);
+		return "formCreateAuthor";
+	}
+	
+	@PostMapping("/saveAuthor")
+	public ModelAndView saveAuthor(@ModelAttribute author author) {
+		if(author.getId() == null) {
+			authorProxy.createAuthor(author);
+		} 
+		return new ModelAndView("redirect:/");
+	}
+	
+	@GetMapping("/createCategory")
+	public String createCategory(Model model) {
+		category category = new category();
+		model.addAttribute("category", category);
+		return "formCreateCategory";
+	}
+	
+	@PostMapping("/saveCategory")
+	public ModelAndView saveCategory(@ModelAttribute category category) {
+		if(category.getId() == null) {
+			categoryProxy.createCategory(category);
+		} 
+		return new ModelAndView("redirect:/");
+	}
+	
+	@GetMapping("/createComment")
+	public String createComment(Model model) {
+		comment comment = new comment();
+		model.addAttribute("comment", comment);
+		return "formCreateComment";
+	}
+	
+	@PostMapping("/saveComment")
+	public ModelAndView saveComment(@ModelAttribute comment comment) {
+		if(comment.getId() == null) {
+			commentProxy.createComment(comment);
+		} 
+		return new ModelAndView("redirect:/");
 	}
 	
 }

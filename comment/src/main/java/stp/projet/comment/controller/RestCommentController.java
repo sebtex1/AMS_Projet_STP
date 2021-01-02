@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import stp.projet.comment.model.Comment;
@@ -29,5 +31,11 @@ public class RestCommentController {
 		Optional<Comment> comment = commentRepository.findById(id);		
 		System.out.println("Retrieve " + comment.get().getId());
 		return comment;		
+	}
+	
+	@PostMapping("/comment")
+	public Comment createAuthor(@RequestBody Comment comment) {
+		comment = commentRepository.save(comment);
+		return comment;
 	}
 }

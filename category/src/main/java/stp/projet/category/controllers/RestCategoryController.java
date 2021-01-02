@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import stp.projet.category.model.Category;
@@ -29,5 +31,11 @@ public class RestCategoryController {
 		Optional<Category> category = categoryRepository.findById(id);		
 		System.out.println("Retrieve " + category.get().getName());
 		return category;		
+	}
+	
+	@PostMapping("/category")
+	public Category createAuthor(@RequestBody Category category) {
+		category = categoryRepository.save(category);
+		return category;
 	}
 }

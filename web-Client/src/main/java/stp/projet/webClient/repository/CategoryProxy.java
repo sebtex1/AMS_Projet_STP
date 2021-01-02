@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeoutException;
 
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.HttpServerErrorException;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-
 import stp.projet.webClient.model.category;
 
 @Repository
@@ -59,4 +59,19 @@ public class CategoryProxy extends GenericProxy{
 		System.out.println("From fallback method HttpServerErrorException : " + ex.getMessage());
 		return new ArrayList<category>();
 	}	
+	
+	public category createCategory(category category) {
+		
+		String createCategoryUrl = props.getApiUrl() + "/category";
+		
+		HttpEntity<category> requestEntity = new HttpEntity<category>(category);
+		ResponseEntity<category> response = restTemplate.exchange(
+				createCategoryUrl,
+				HttpMethod.POST,
+				requestEntity,
+				category.class);
+		
+		return response.getBody();
+		
+	}
 }

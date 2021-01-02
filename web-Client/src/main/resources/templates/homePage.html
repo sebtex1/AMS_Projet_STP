@@ -28,6 +28,8 @@
 		</tbody>
 	</table>
 	
+	<a th:href="@{/createAuthor}">Add an author</a>
+	
 	<h2>Table articles</h2>
 	<table>
 		<thead>
@@ -42,7 +44,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="article: ${articles}">
+			<!--  <tr th:each="article: ${articles}">
 				<td><span th:text="${article.id}"></span></td>
 				<td><span th:text="${article.name}"></span></td>
 				<td><span th:text="${article.category.name}"></span></td>
@@ -50,7 +52,7 @@
 				<td><span th:text="${article.date}"></span></td>
 				<td><span th:text="${article.content}"></span></td>
 				<td><span th:text="${article.comment.text}"></span></td>
-			</tr>
+			</tr>-->
 		</tbody>
 	</table>
 	
@@ -69,6 +71,8 @@
 			</tr>
 		</tbody>
 	</table>
+	
+	<a th:href="@{/createCategory}">Add an comment</a>
 	
 	<h2>Table comments</h2>
 	<table>
@@ -89,5 +93,7 @@
 			</tr>
 		</tbody>
 	</table>
+	
+	<a th:href="@{/createComment}">Add a comment</a>
 </body>
 </html>

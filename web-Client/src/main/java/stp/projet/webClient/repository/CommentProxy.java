@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeoutException;
 
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.HttpServerErrorException;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-
 import stp.projet.webClient.model.comment;
 
 @Repository
@@ -59,4 +59,19 @@ public class CommentProxy extends GenericProxy {
 		System.out.println("From fallback method HttpServerErrorException : " + ex.getMessage());
 		return new ArrayList<comment>();
 	}	
+	
+	public comment createComment(comment comment) {
+		
+		String createCommentUrl = props.getApiUrl() + "/comment";
+		
+		HttpEntity<comment> requestEntity = new HttpEntity<comment>(comment);
+		ResponseEntity<comment> response = restTemplate.exchange(
+				createCommentUrl,
+				HttpMethod.POST,
+				requestEntity,
+				comment.class);
+		
+		return response.getBody();
+		
+	}
 }
