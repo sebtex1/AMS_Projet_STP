@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeoutException;
 
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
@@ -59,5 +60,20 @@ public class AuthorProxy extends GenericProxy {
 		System.out.println("From fallback method HttpServerErrorException : " + ex.getMessage());
 		return new ArrayList<author>();
 	}
+	
+	public author createAuthor(author author) {
+
+        String createAuthorUrl = props.getApiUrl() + "/author";
+
+        HttpEntity<author> requestEntity = new HttpEntity<author>(author);
+        ResponseEntity<author> response = restTemplate.exchange(
+                createAuthorUrl,
+                HttpMethod.POST,
+                requestEntity,
+                author.class);
+
+        return response.getBody();
+
+    }
 
 }

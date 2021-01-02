@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import stp.projet.webClient.model.author;
 import stp.projet.webClient.model.article;
@@ -47,7 +50,7 @@ public class WebClientController {
 	}
 	
 	@GetMapping("/{id}")
-	public String getArticle(
+	public String getUniqueArticle(
 			@PathVariable(name = "id", required = false) Integer id,
 			Model model) {
 		int idToGet = 1;
@@ -60,4 +63,18 @@ public class WebClientController {
 		return "article";
 	}
 	
+	@GetMapping("/createAuthor")
+    public String createAuthor(Model model) {
+        author author = new author();
+        model.addAttribute("author", author);
+        return "formCreateAuthor";
+    }
+
+    @PostMapping("/saveAuthor")
+    public ModelAndView saveAuthor(@ModelAttribute author author) {
+        if(author.getId() == null) {
+            authorProxy.createAuthor(author);
+        } 
+        return new ModelAndView("redirect:/");
+    }
 }
