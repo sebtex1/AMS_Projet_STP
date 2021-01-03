@@ -4,16 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import stp.projet.webClient.model.author;
+
 import stp.projet.webClient.model.article;
+import stp.projet.webClient.model.author;
 import stp.projet.webClient.model.category;
 import stp.projet.webClient.model.comment;
-import stp.projet.webClient.repository.AuthorProxy;
 import stp.projet.webClient.repository.ArticleProxy;
+import stp.projet.webClient.repository.AuthorProxy;
 import stp.projet.webClient.repository.CategoryProxy;
 import stp.projet.webClient.repository.CommentProxy;
 
@@ -73,7 +74,9 @@ public class WebClientController {
 	public ModelAndView saveAuthor(@ModelAttribute author author) {
 		if(author.getId() == null) {
 			authorProxy.createAuthor(author);
-		} 
+		} else {
+			authorProxy.updateAuthor(author);
+		}
 		return new ModelAndView("redirect:/");
 	}
 	
@@ -101,7 +104,9 @@ public class WebClientController {
 	public ModelAndView saveCategory(@ModelAttribute category category) {
 		if(category.getId() == null) {
 			categoryProxy.createCategory(category);
-		} 
+		} else {
+			categoryProxy.updateCategory(category);
+		}
 		return new ModelAndView("redirect:/");
 	}
 	
@@ -129,7 +134,9 @@ public class WebClientController {
 	public ModelAndView saveComment(@ModelAttribute comment comment) {
 		if(comment.getId() == null) {
 			commentProxy.createComment(comment);
-		} 
+		} else {
+			commentProxy.updateComment(comment);
+		}
 		return new ModelAndView("redirect:/");
 	}
 	
