@@ -59,5 +59,4 @@ public class ArticleProxy extends GenericProxy {
 		System.out.println("From fallback method HttpServerErrorException : " + ex.getMessage());
 		return new ArrayList<article>();
 	}
-
 }

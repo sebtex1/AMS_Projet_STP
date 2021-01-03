@@ -74,4 +74,23 @@ public class CommentProxy extends GenericProxy {
 		return response.getBody();
 		
 	}
+	
+	public void deleteComment(Integer id) {
+		
+		String deleteCommentUrl = props.getApiUrl() + "/comment/" + id;
+		
+		ResponseEntity<Void> response = restTemplate.exchange(deleteCommentUrl, HttpMethod.DELETE, null, Void.class);
+		
+		System.out.println(response.getStatusCode().toString());
+	}
+	
+	public comment updateComment(comment comment) {
+		
+		String updateCommentUrl = props.getApiUrl() + "/comment/" + comment.getId();
+		
+		HttpEntity<comment> requestEntity = new HttpEntity<comment>(comment);
+		ResponseEntity<comment> response = restTemplate.exchange(updateCommentUrl, HttpMethod.PUT, requestEntity, comment.class);
+		
+		return response.getBody();
+	}
 }

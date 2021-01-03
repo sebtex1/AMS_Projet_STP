@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Update Form</title>
+</head>
+<body>
+
+	<form method="post" th:action="@{/saveComment}" th:object="${comment}">
+		<input type="hidden" th:field="*{id}" />
+	
+		<label for="commentTextInput">Text</label> 
+		<input type="text" th:field="*{text}" id="commentTextInput" /> 
+			
+		<input type="submit" value="Validate" />
+	</form>
+
+</body>
+</html>

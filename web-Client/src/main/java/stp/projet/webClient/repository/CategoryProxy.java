@@ -74,4 +74,23 @@ public class CategoryProxy extends GenericProxy{
 		return response.getBody();
 		
 	}
+	
+	public void deleteCategory(Integer id) {
+		
+		String deleteCategoryUrl = props.getApiUrl() + "/category/" + id;
+		
+		ResponseEntity<Void> response = restTemplate.exchange(deleteCategoryUrl, HttpMethod.DELETE, null, Void.class);
+		
+		System.out.println(response.getStatusCode().toString());
+	}
+	
+	public category updateCategory(category category) {
+		
+		String updateCategoryUrl = props.getApiUrl() + "/category/" + category.getId();
+		
+		HttpEntity<category> requestEntity = new HttpEntity<category>(category);
+		ResponseEntity<category> response = restTemplate.exchange(updateCategoryUrl, HttpMethod.PUT, requestEntity, category.class);
+		
+		return response.getBody();
+	}
 }

@@ -75,5 +75,23 @@ public class AuthorProxy extends GenericProxy {
 		return response.getBody();
 		
 	}
-
+	
+	public void deleteAuthor(Integer id) {
+		
+		String deleteAuthorUrl = props.getApiUrl() + "/author/" + id;
+		
+		ResponseEntity<Void> response = restTemplate.exchange(deleteAuthorUrl, HttpMethod.DELETE, null, Void.class);
+		
+		System.out.println(response.getStatusCode().toString());
+	}
+	
+	public author updateAuthor(author author) {
+		
+		String updateAuthorUrl = props.getApiUrl() + "/author/" + author.getId();
+		
+		HttpEntity<author> requestEntity = new HttpEntity<author>(author);
+		ResponseEntity<author> response = restTemplate.exchange(updateAuthorUrl, HttpMethod.PUT, requestEntity, author.class);
+		
+		return response.getBody();
+	}
 }

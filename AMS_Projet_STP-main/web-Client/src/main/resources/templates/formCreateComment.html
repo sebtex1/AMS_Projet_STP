@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Create Form</title>
+</head>
+<body>
+
+	<form method="post" th:action="@{/saveComment}" th:object="${comment}">
+		<label for="DateInput">Date</label> 
+		<input type="date" th:field="*{date}" id="DateInput" /> 
+		
+		<label for="textInput">text</label> 
+		<input type="text" th:field="*{text}" id="textInput" /> 
+		
+		<label for="IdInput">id Author</label> 
+		<input type="text" th:field="*{idauthor}" id="IdInput" /> 
+			
+		<input type="submit" value="Validate" />
+	</form>
+
+</body>
+</html>

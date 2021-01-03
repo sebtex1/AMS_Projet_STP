@@ -77,6 +77,19 @@ public class WebClientController {
 		return new ModelAndView("redirect:/");
 	}
 	
+	@GetMapping("/deleteAuthor/{id}")
+	public ModelAndView deleteAuthor(@PathVariable Integer id) {
+		authorProxy.deleteAuthor(id);
+		return new ModelAndView("redirect:/");
+	}
+	
+	@GetMapping("/updateAuthor/{id}")
+	public String updateAuthor(@PathVariable Integer id, Model model) {
+		author author = authorProxy.getAuthor(id);
+		model.addAttribute("author", author);
+		return "formUpdateAuthor";
+	}
+	
 	@GetMapping("/createCategory")
 	public String createCategory(Model model) {
 		category category = new category();
@@ -90,6 +103,19 @@ public class WebClientController {
 			categoryProxy.createCategory(category);
 		} 
 		return new ModelAndView("redirect:/");
+	}
+	
+	@GetMapping("/deleteCategory/{id}")
+	public ModelAndView deleteCategory(@PathVariable Integer id) {
+		categoryProxy.deleteCategory(id);
+		return new ModelAndView("redirect:/");
+	}
+	
+	@GetMapping("/updateCategory/{id}")
+	public String updateCategory(@PathVariable Integer id, Model model) {
+		category category = categoryProxy.getCategory(id);
+		model.addAttribute("category", category);
+		return "formUpdateCategory";
 	}
 	
 	@GetMapping("/createComment")
@@ -107,4 +133,16 @@ public class WebClientController {
 		return new ModelAndView("redirect:/");
 	}
 	
+	@GetMapping("/deleteComment/{id}")
+	public ModelAndView deleteComment(@PathVariable Integer id) {
+		commentProxy.deleteComment(id);
+		return new ModelAndView("redirect:/");
+	}
+	
+	@GetMapping("/updateComment/{id}")
+	public String updateComment(@PathVariable Integer id, Model model) {
+		comment comment = commentProxy.getComment(id);
+		model.addAttribute("comment", comment);
+		return "formUpdateComment";
+	}
 }
