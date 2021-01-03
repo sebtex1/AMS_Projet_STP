@@ -36,7 +36,7 @@ public class RestCategoryController {
 	}
 	
 	@PostMapping("/category")
-	public Category createAuthor(@RequestBody Category category) {
+	public Category createCategory(@RequestBody Category category) {
 		category = categoryRepository.save(category);
 		return category;
 	}
@@ -46,8 +46,8 @@ public class RestCategoryController {
 		categoryRepository.deleteById(id);
 	}
 	
-	@PutMapping("/author/{id}")
-	public Category updateAuthor(@PathVariable("id") Integer id, @RequestBody Category category) {
+	@PutMapping("/category/{id}")
+	public Category updateCategory(@PathVariable("id") Integer id, @RequestBody Category category) {
 		Category  currentCategory  = categoryRepository.findById(id).get();
 		
 		String name = category.getName();
